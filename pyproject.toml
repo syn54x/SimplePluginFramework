@@ -7,13 +7,17 @@ name = "spf"
 version = "0.1.0"
 description = "A Microlibrary / Plugin system"
 dependencies = [
-    "pydantic",
     "rich",
-    "typer"
 ]
 
 [project.optional-dependencies]
-dev = ["pre-commit", "black", "ruff"]
+dev = ["pre-commit", "black", "ruff", "pytest"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.black]
+line-length = 99
+
+[tool.ruff]
+line-length = 99

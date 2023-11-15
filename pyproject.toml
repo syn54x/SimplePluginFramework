@@ -11,7 +11,21 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pre-commit", "black", "ruff", "pytest"]
+dev = [
+    "pre-commit",
+    "pdoc3",
+    "black",
+    "ipykernel",
+    "jupyter",
+    "notebook",
+    "mkdocs",
+    "mkdocstrings[python]",
+    "mkdocs-material",
+    "mkdocs-jupyter",
+    "ruff",
+    "pydocstringformatter",
+    "pytest"
+]
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -8,6 +8,19 @@ spf = {file = "."}
 
 [dev-packages]
 spf = {file = ".", editable = true, extras = ["dev"]}
+pre-commit = "*"
+pdoc3 = "*"
+black = "*"
+ipykernel = "*"
+jupyter = "*"
+notebook = "*"
+mkdocs = "*"
+mkdocstrings = {extras = ["python"], version = "*"}
+mkdocs-material = "*"
+mkdocs-jupyter = "*"
+pytest = "*"
+ruff = "*"
+pydocstringformatter = "*"
 
 [requires]
 python_version = "3.11"

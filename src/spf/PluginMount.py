@@ -32,13 +32,36 @@ class PluginMount(ABCMeta):
             cls.plugins[cls.__name__] = cls
 
     def _verify(cls):  # sourcery skip: instance-method-first-arg-name
+        """Verifies that the required static properties are implemented by the class.
+
+        Raises
+        ------
+        NotImplementedError
+            If any of the required static properties are not implemented.
+
+        Examples
+        --------
+
+        >>> _verify(MyClass)
+        """
         base = cls.__mro__[-2]
         if not_implemented := set(cls.REQUIRED_STATIC_PROPERTIES) - set(base.__dict__.keys()):
             raise NotImplementedError(
                 f"Attribute(s) {not_implemented} not implemented by class {base.__name__}"
             )
 
-    def load(cls):  # sourcery skip: instance-method-first-arg-name
+    def load(cls) -> None:  # sourcery skip: instance-method-first-arg-name
+        """Loads all plugins registered under the specified entry point.
+
+        Returns
+        -------
+        None
+
+        Example
+        -------
+
+        >>> load(PluginMount)
+        """
         if cls == PluginMount:
             return None
 

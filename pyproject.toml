@@ -3,12 +3,10 @@ requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "spf"
+name = "simple-plugin-framework"
 version = "0.1.0"
-description = "A Microlibrary / Plugin system"
-dependencies = [
-    "rich",
-]
+description = "A Simple Plugin Framework"
+dependencies = []
 
 [project.optional-dependencies]
 dev = [

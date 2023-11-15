@@ -3,7 +3,7 @@ SPF is a simple, low-code, dependency free plugin framework following the design
 
 # Install
 
-`pip install spf`
+`pip install simple-plugin-framework`
 
 # Usage
 

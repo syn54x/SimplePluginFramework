@@ -4,10 +4,10 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-spf = {file = "."}
+simple-plugin-framework = {file = "."}
 
 [dev-packages]
-spf = {file = ".", editable = true, extras = ["dev"]}
+simple-plugin-framework = {file = ".", editable = true, extras = ["dev"]}
 pre-commit = "*"
 pdoc3 = "*"
 black = "*"

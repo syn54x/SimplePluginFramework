@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spf"
+version = "0.1.0"
+description = "A Microlibrary / Plugin system"
+dependencies = [
+    "pydantic",
+    "rich",
+    "typer"
+]
+
+[project.optional-dependencies]
+dev = ["pre-commit", "black", "ruff"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

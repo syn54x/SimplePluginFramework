@@ -28,10 +28,10 @@ class PluginMount(ABCMeta):
             # This must be a plugin implementation, which should be registered.
             # Simply appending it to the list is all that's needed to keep
             # track of it later.
-            cls._verify()
+            cls.verify()
             cls.plugins[cls.__name__] = cls
 
-    def _verify(cls):  # sourcery skip: instance-method-first-arg-name
+    def verify(cls):  # sourcery skip: instance-method-first-arg-name
         """Verifies that the required static properties are implemented by the class.
 
         Raises
@@ -42,7 +42,7 @@ class PluginMount(ABCMeta):
         Examples
         --------
 
-        >>> _verify(MyClass)
+        >>> verify(MyClass)
         """
         base = cls.__mro__[-2]
         if not_implemented := set(cls.REQUIRED_STATIC_PROPERTIES) - set(base.__dict__.keys()):
@@ -57,9 +57,8 @@ class PluginMount(ABCMeta):
         -------
         None
 
-        Example
-        -------
-
+        Examples
+        --------
         >>> load(PluginMount)
         """
         if cls == PluginMount:

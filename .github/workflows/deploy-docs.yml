@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Upload Python Package
+name: Deploy MkDocs
 
 on:
     pull_request:
@@ -31,5 +31,11 @@ jobs:
         python-version: '3.x'
     - name: Install dependencies
       run: python -m pip install ".[dev]"
-    - name: Deploy Docs
-      run: python -m mkdocs gh-deploy
+    - name: Deploy docs
+      uses: mhausenblas/mkdocs-deploy-gh-pages@master
+      # Or use mhausenblas/mkdocs-deploy-gh-pages@nomaterial to build without the mkdocs-material theme
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        # GITHUB_DOMAIN: github.myenterprise.com
+    # - name: Deploy Docs
+    #   run: python -m mkdocs gh-deploy

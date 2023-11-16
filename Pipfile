@@ -21,6 +21,7 @@ mkdocs-jupyter = "*"
 pytest = "*"
 ruff = "*"
 pydocstringformatter = "*"
+mike = "*"
 
 [requires]
 python_version = "3.11"

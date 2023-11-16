@@ -25,6 +25,8 @@ theme:
     - toc.follow
 
 nav:
+  - Home: index.md
+  - Changelog: changelog.md
   - Guides:
     - Fundamentals Of A Plugin Framework: Guides/Fundamentals.md
     - Hello World: Notebooks/HelloWorld.ipynb

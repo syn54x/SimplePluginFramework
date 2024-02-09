@@ -37,5 +37,6 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
-      - run: pip install mkdocs-material 
-      - run: mkdocs gh-deploy --force
+      - run: pip install pipenv
+      - run: pipenv install --dev 
+      - run: pipenv run mkdocs gh-deploy --force

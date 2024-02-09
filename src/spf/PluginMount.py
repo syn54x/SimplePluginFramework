@@ -42,7 +42,7 @@ class PluginMount(ABCMeta):
         Examples
         --------
 
-        >>> verify(MyClass)
+        >>> MyMountPoint.verify()
         """
         base = cls.__mro__[-2]
         if not_implemented := set(cls.REQUIRED_STATIC_PROPERTIES) - set(base.__dict__.keys()):
@@ -59,7 +59,7 @@ class PluginMount(ABCMeta):
 
         Examples
         --------
-        >>> load(PluginMount)
+        >>> MyMountPoint.load()
         """
         if cls == PluginMount:
             return None

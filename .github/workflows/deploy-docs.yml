@@ -9,11 +9,8 @@
 name: Deploy MkDocs
 
 on:
-    pull_request:
     push:
         branches: [main]
-#   release:
-#     types: [published]
 
 permissions:
   contents: write

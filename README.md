@@ -1,7 +1,6 @@
 # SimplePluginFramework
 SPF is a simple, low-code, dependency free plugin framework following the design principals laid out by Marty Alchin in his blog post [A Simple Plugin Framework](https://web.archive.org/web/20190415035530/http://martyalchin.com/2008/jan/10/simple-plugin-framework/)
 
-
 If you like, you can visit our [Docs pages](https://iviyg0t.github.io/SimplePluginFramework/).
 
 
@@ -12,11 +11,11 @@ If you like, you can visit our [Docs pages](https://iviyg0t.github.io/SimplePlug
 
 # Fundamentals Of A Plugin Framework
 
-SPF is a dead simple, low code, pure python plugin framework.  There are three primary requirements for a plugin system:
+SPF is a dead simple, low code, pure python plugin framework.  The framework satisfies the three primary requirements for a plugin based architecture:
 
 ## Declaration
 
-> The framework needs to provide a mechanism for declaring a mount point for plugins
+*The framework needs to provide a mechanism for declaring a mount point for plugins*
 
 **How**
 
@@ -31,7 +30,7 @@ class MyMountPoint(metaclass=PluginMount):
 
 ## Registration
 
-> The framework needs to be able to register a plugin to a declared mount point.
+*The framework needs to be able to register a plugin to a declared mount point.*
 
 **How**
 
@@ -44,7 +43,7 @@ class MyPlugin(MyMountPoint):
 
 ## Discovery
 
-> The framework needs to be able to discover what plugins are available.
+*The framework needs to be able to discover what plugins are available.*
 
 **How**
 

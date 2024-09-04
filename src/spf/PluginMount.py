@@ -1,5 +1,8 @@
 from abc import ABCMeta
 from typing import List, Any
+from functools import wraps
+
+from singleton_decorator import singleton
 
 try:
     from importlib.metadata import entry_points
@@ -12,7 +15,63 @@ except ImportError:
     USE_LEGACY = True
 
 
+@singleton
+class MountPointRegistry:
+    mount_points: dict = {}
+
+    def register(self, mount_point: Any) -> None:
+        self.mount_points[mount_point.__name__] = mount_point
+
+
+def plugin_mount(cls):
+    if not hasattr(cls, "entry_point"):
+        raise AttributeError(f"`{cls.__name__}` does not have the required property `entry_point`")
+    if getattr(cls, "entry_point") is None:
+        raise AttributeError("`entry_point` cannot be None")
+
+    MountPointRegistry().register(cls)
+
+    @wraps(cls)
+    def wrapper(*args, **kwargs):
+        return cls(*args, **kwargs)
+
+    return wrapper
+
+
 class PluginMount(ABCMeta):
+    """
+    Metaclass for defining plugin mount points.
+
+    Explanation
+    -----------
+    This metaclass is used to define plugin mount points, which are used as
+    base classes for plugin implementations.  It provides functionality for
+    registering and verifying plugin implementations.
+
+    Parameters
+    ----------
+    name : str
+        The name of the class.
+    bases : List[Any]
+        The base classes of the class.
+    attrs : List[Any]
+        The attributes of the class.
+
+    Attributes
+    ----------
+    REQUIRED_STATIC_PROPERTIES : List[str]
+        The list of required static properties that plugin implementations must implement.
+
+    Methods
+    -------
+    __init__(cls, name, bases, attrs)
+        Initializes the plugin mount point or registers a plugin implementation.
+    verify(cls)
+        Verifies that the required static properties are implemented by the class.
+    load(cls)
+        Loads all plugins registered under the specified entry point.
+    """
+
     REQUIRED_STATIC_PROPERTIES = ["entry_point"]
 
     def __init__(
@@ -59,6 +118,7 @@ class PluginMount(ABCMeta):
 
         Examples
         --------
+
         >>> MyMountPoint.load()
         """
         if cls == PluginMount:

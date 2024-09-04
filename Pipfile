@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 simple-plugin-framework = {file = "."}
+singleton-decorator = "*"
 
 [dev-packages]
 simple-plugin-framework = {file = ".", editable = true, extras = ["dev"]}
